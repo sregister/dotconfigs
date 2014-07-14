@@ -1,0 +1,33 @@
+:set nospell
+:set t_Co=256
+:color molokai
+:hi clear SpellBad
+:hi SpellBad cterm=underline
+:hi IndentGuidesOdd ctermbg=darkgrey
+:hi SyntasticSyntaxError ctermbg=red
+:hi SyntasticWarning cterm=underline
+:hi SyntasticError cterm=underline
+:hi IndentGuidesEven ctermbg=grey
+:hi Cursor ctermbg=green
+let g:indent_guides_enable_on_vim_startup = 0
+
+"insert ctmpl.txt into every new .c file
+autocmd bufnewfile *.c so ~/.vim/ctmpl.txt
+
+"search the file for expressions, insert after with various bits of info
+autocmd bufnewfile *.c exe "1," . 6 . "g/Created By :.*/s//Created By : Scott Register ("$USER ")"
+autocmd bufnewfile *.c exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.c exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.c execute "normal ma"
+autocmd Bufwritepre,filewritepre *.c exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.c execute "normal `a"
+
+"cpp insert
+autocmd bufnewfile *.cpp so ~/.vim/ctmpl.txt
+autocmd bufnewfile *.cpp exe "1," . 6 . "g/Created By :.*/s//Created By : Scott Register ("$USER ")"
+autocmd bufnewfile *.cpp exe "1," . 6 . "g/File Name :.*/s//File Name : " .expand("%")
+autocmd bufnewfile *.cpp exe "1," . 6 . "g/Creation Date :.*/s//Creation Date : " .strftime("%c")
+autocmd Bufwritepre,filewritepre *.cpp execute "normal ma"
+autocmd Bufwritepre,filewritepre *.cpp exe "1," . 6 . "g/Last Modified :.*/s/Last Modified :.*/Last Modified : " .strftime("%c")
+autocmd bufwritepost,filewritepost *.cpp execute "normal `a"
+
