@@ -1,3 +1,4 @@
+#asdf
 :call pathogen#infect()
 set nocompatible
 :set go-=T
