@@ -1,0 +1,58 @@
+bunsen-themes (8.3-1) bunsen-hydrogen; urgency=medium
+
+  * nagybence: Fix GTK3 deprecation warnings in CSS stylesheets
+
+ -- Jens John <dev@2ion.de>  Sat, 26 Sep 2015 13:45:03 +0200
+
+bunsen-themes (8.2-1) bunsen-hydrogen; urgency=medium
+
+  * hhh: Fix GTK shadows
+
+ -- Jens John <dev@2ion.de>  Thu, 17 Sep 2015 17:50:46 +0200
+
+bunsen-themes (8.1-1) bunsen-hydrogen; urgency=medium
+
+  * damo: Fix for GTK2 tooltip transparency
+  * damo: Fix for GTK3 client-side decorations
+  * Various email address changes
+
+ -- Jens John <dev@2ion.de>  Thu, 17 Sep 2015 17:50:46 +0200
+
+bunsen-themes (8.0-1.1) bunsen-hydrogen; urgency=low
+
+  * Non-maintainer upload.
+  * Edit debian/copyright.
+
+ -- John Crawley <john@bunsenlabs.org>  Tue, 08 Sep 2015 17:14:07 +0900
+
+bunsen-themes (8.0-1) bunsen-hydrogen; urgency=medium
+
+  * Correct major  version number to prepare for the official release
+  * Change suite to bunsen-hydrogen
+
+ -- Jens John <dev@2ion.de>  Sun, 30 Aug 2015 16:37:35 +0200
+
+bunsen-themes (1.1-1) unstable; urgency=medium
+
+  * Bunsen and Bunsen-Blue: Fix highlights for active tabs
+
+ -- Jens John <dev@2ion.de>  Wed, 08 Jul 2015 19:37:35 +0200
+
+bunsen-themes (1.0-3) unstable; urgency=low
+
+  * Adjust background colours etc in dark themes.
+
+ -- John Crawley <john@bunsenlabs.org>  Sat, 04 Jul 2015 14:07:55 +0900
+
+bunsen-themes (1.0-2) stable; urgency=low
+
+  * Non-maintainer upload.
+  * Update version to reflect recent changes.
+
+ -- John Crawley <john@bunsenlabs.org>  Wed, 20 May 2015 12:16:05 +0900
+
+bunsen-themes (1.0-1) stable; urgency=medium
+
+  * Initial release
+
+ -- Jens Oliver John <dev@2ion.de>  Wed, 04 Mar 2015 19:09:37 +0100
