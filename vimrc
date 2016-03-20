@@ -13,6 +13,11 @@ set t_Co=256
 "make sure the last line is a single .
 "to make a header for other file exention copy and paste these lines
 "and replace all *.c with *.cpp
+"
+"
+set foldmethod=indent
+set foldlevelstart=20
+nnoremap <space> za
 
 "insert ctmpl.txt into every new .c file
 autocmd bufnewfile *.c so ~/.vim/ctmpl.txt
