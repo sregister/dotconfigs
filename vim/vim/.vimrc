@@ -2,16 +2,14 @@
 set nocompatible
 :set go-=T
 :set number
-:set tabstop=4 shiftwidth=4 expandtab
+:set tabstop=4
 filetype plugin on
-"filetype indent on
-:set autoindent
-:set smartindent
-:set cindent
+filetype indent on
 :set autochdir
 syntax on
-"set t_Co=256
-:color molokai 
+set t_Co=256
+:set background=dark
+
 "feel free to add more stuff after the header in ctmpl.txt
 "make sure the last line is a single .
 "to make a header for other file exention copy and paste these lines
@@ -68,3 +66,4 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+

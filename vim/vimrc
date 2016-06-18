@@ -1,23 +1,26 @@
 :call pathogen#infect()
 set nocompatible
-:set go-=T
-:set number
-:set tabstop=4
+set go-=T
+set number
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 filetype plugin on
 filetype indent on
-:set autochdir
-syntax on
 set t_Co=256
-:color molokai 
+set autochdir
+syntax enable 
+set background=dark
+color wombat256
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+
 "feel free to add more stuff after the header in ctmpl.txt
 "make sure the last line is a single .
 "to make a header for other file exention copy and paste these lines
 "and replace all *.c with *.cpp
-"
-"
-set foldmethod=indent
-set foldlevelstart=20
-nnoremap <space> za
 
 "insert ctmpl.txt into every new .c file
 autocmd bufnewfile *.c so ~/.vim/ctmpl.txt
@@ -70,3 +73,4 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+
