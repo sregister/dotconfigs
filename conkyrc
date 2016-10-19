@@ -44,7 +44,7 @@ CPU Freq:${alignr}$freq(MHz)
 ${color0}Core1:$color ${cpu cpu1}%$alignr${exec sensors | grep 'Core 0' | cut -c16-22 | sed '/^$/d'}
 ${color0}${cpugraph cpu1 20,210 ffffFF ffffff}
 ${color0}Core2:$color ${cpu cpu2}%$alignr${exec sensors | grep 'Core 1' | cut -c16-22 | sed '/^$/d'}
-${color0}${cpugraph cpu2 20,210 ffffFF 0077ff}
+${color0}${cpugraph cpu2 20,210 ffffFF ffffff}
 ${color0}Core3:$color ${cpu cpu3}%$alignr${exec sensors | grep 'Core 2' | cut -c16-22 | sed '/^$/d'}
 ${color0}${cpugraph cpu3 20,210 ffffFF ffffff}
 ${color0}Core4:$color ${cpu cpu4}%$alignr${exec sensors | grep 'Core 3' | cut -c16-22 | sed '/^$/d'}
