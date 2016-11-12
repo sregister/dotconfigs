@@ -114,4 +114,4 @@ if ! shopt -oq posix; then
 fi
 
 umask 022
-DISPLAY=:0
+export DISPLAY=:0
