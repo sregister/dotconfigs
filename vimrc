@@ -1,5 +1,4 @@
 call pathogen#infect()
-set visualbell
 set nocompatible
 set go-=T
 set number
