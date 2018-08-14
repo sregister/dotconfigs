@@ -113,5 +113,30 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# get current branch in git repo
+function parse_git_branch() {
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ ! "${BRANCH}" == "" ]
+    then
+        echo "[${BRANCH}${STAT}]"
+    else
+        echo ""
+    fi
+}
+
+# get current branch in git repo
+function parse_git_branch() {
+    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ ! "${BRANCH}" == "" ]
+    then
+        echo "[${BRANCH}${STAT}]"
+    else
+        echo ""
+    fi
+}
+
+# get current status of git repo
+export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
+export DISPLAY=127.0.0.1:0.0
 umask 022
-export DISPLAY=:0
+xset r rate 400 65
