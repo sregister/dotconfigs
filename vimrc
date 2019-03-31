@@ -1,4 +1,3 @@
-call pathogen#infect()
 set nocompatible
 set go-=T
 set number
@@ -13,20 +12,18 @@ set t_Co=256
 set laststatus=2
 color wombat256i
 
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
-
 set foldmethod=indent
 set foldlevelstart=20
 nnoremap <space> za
 
-"special binds
-:nnoremap <F5> "=strftime("%c")<CR>P
-:inoremap <F5> <C-R>=strftime("%c")<CR>
-:nmap <F2> :tabnew
-:nmap <F3> :close
 :nmap <silent> <C-D> :NERDTreeToggle<CR>
-
-autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+call plug#begin()
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Valloric/YouCompleteMe'
+call plug#end()
+
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
