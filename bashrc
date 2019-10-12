@@ -88,7 +88,7 @@ function parse_git_branch() {
 
 # attach tmux session if running else  create new session
 function tma {
-	if tmux ls | wc; then
+	if tmux ls; then
 		tmux a -dt 0
 	else
 		tmux -2
