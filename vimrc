@@ -10,7 +10,7 @@ set autochdir
 syntax on
 set t_Co=256
 set laststatus=2
-color wombat256i
+"color wombat256i
 
 set foldmethod=indent
 set foldlevelstart=20
@@ -26,9 +26,14 @@ Plug 'scrooloose/nerdtree'
 Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 
 nmap <silent> <C-P> :Files<CR>
 let g:fzf_tags_command = 'ctags -R'
+
+let g:dracula_italic = 0
+let g:dracula_colorterm = 0
+colorscheme dracula
