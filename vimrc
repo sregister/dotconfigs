@@ -30,6 +30,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
+nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? "80" : "")<CR>
 
 nmap <silent> <C-P> :Files<CR>
 let g:fzf_tags_command = 'ctags -R'
