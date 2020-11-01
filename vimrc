@@ -10,7 +10,7 @@ set autochdir
 syntax on
 set t_Co=256
 set laststatus=2
-"color wombat256i
+color wombat256i
 
 set foldmethod=indent
 set foldlevelstart=20
@@ -35,6 +35,6 @@ nnoremap <silent> <leader>c :execute "set colorcolumn=" . (&colorcolumn == "" ? 
 nmap <silent> <C-P> :Files<CR>
 let g:fzf_tags_command = 'ctags -R'
 
-let g:dracula_italic = 0
-let g:dracula_colorterm = 0
-colorscheme dracula
+"let g:dracula_italic = 0
+"let g:dracula_colorterm = 0
+"colorscheme dracula
