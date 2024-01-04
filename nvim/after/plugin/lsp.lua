@@ -24,3 +24,16 @@ cmp.setup({
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
   })
 })
+
+
+require'lspconfig'.pylsp.setup{
+    settings = {
+        pylsp = {
+            plugins = {
+                flake8 = {
+                    enabled = true,
+                }
+            }
+        }
+    }
+}
