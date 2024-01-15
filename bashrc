@@ -86,20 +86,20 @@ function parse_git_branch() {
     fi
 }
 
-# attach tmux session if running else  create new session
-function tma {
-	if tmux ls; then
-		tmux a -dt 0
-	else
-		tmux -2
-	fi
-}
-
 # get current status of git repo
 export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
 #export DISPLAY=127.0.0.1:0.0
 umask 022
 
+if command -v nvim &> /dev/null; then
+  alias vim='nvim'
+  alias vi='nvim'
+fi
+
+ip='ip -c'
+
 if xset -version &> /dev/null; then
 	xset r rate 400 65 &> /dev/null
 fi
+
+AUTO_ENV_FILENAME='.autoenv'

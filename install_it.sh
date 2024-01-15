@@ -15,4 +15,5 @@ cp ./tmux.conf ~/.tmux.conf && echo "tmux configured"
 #neovim
 #
 
-cp ./local/bin/* ~/.local/bin && echo "bin copied"
+mkdir -p ~/.local/bin/ || true
+cp ./local/bin/* ~/.local/bin/ && echo "bin copied"
