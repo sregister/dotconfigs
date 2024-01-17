@@ -1,0 +1,47 @@
+[font]
+size = 12
+offset = { x = 1, y = 1 }
+
+[font.normal]
+family = "Cascadia Mono"
+
+[cursor]
+style.shape = "Block"
+style.blinking = "On"
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+bindings = [
+{ mouse = "Right", action = "Paste" }
+]
+
+[window.padding]
+x = 8
+y = 0
+
+
+[colors.primary]
+background = '0x1C1E24'
+foreground = '0xC5C8CC'
+
+[colors.normal] 
+black   = '0x282c34'
+red     = '0xe06c75'
+green   = '0x98c379'
+yellow  = '0xe5c07b'
+blue    = '0x61afef'
+magenta = '0xc678dd'
+cyan    = '0x56b6c2'
+white   = '0xdcdfe4'
+
+[colors.bright]
+black   = '0x282c34'
+red     = '0xe06c75'
+green   = '0x98c379'
+yellow  = '0xe5c07b'
+blue    = '0x61afef'
+magenta = '0xc678dd'
+cyan    = '0x56b6c2'
+white   = '0xdcdfe4'
