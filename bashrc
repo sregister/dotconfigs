@@ -107,5 +107,5 @@ if xset -version &> /dev/null; then
 fi
 
 AUTO_ENV_FILENAME='.autoenv'
-
+source ~/.autoenv/activate.sh
 
