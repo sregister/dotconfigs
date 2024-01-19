@@ -100,7 +100,6 @@ if command -v nvim &> /dev/null; then
   alias vi='nvim'
 fi
 
-ip='ip -c'
 
 if xset -version &> /dev/null; then
 	xset r rate 400 65 &> /dev/null
