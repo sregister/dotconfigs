@@ -105,6 +105,6 @@ if xset -version &> /dev/null; then
 	xset r rate 400 65 &> /dev/null
 fi
 
-AUTO_ENV_FILENAME='.autoenv'
+AUTOENV_ENV_FILENAME='.autoenv'
 source ~/.autoenv/activate.sh
 
