@@ -1,6 +1,6 @@
 
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+# tmux sessionizer with ctrl-f
+bind '"\C-f": "tmux-sessionizer\n"'
 
 # If not running interactively, don't do anything
 case $- in
@@ -17,7 +17,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILESIZE=3000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -38,20 +38,26 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# enable ip route 2 colors on versions(ish?) that support it
-if [ "$(ip -V | egrep -o [0-9]*$)" -gt "150000" ]; then
-	alias ip='ip -c'
+# alias ip to ip -c if its supported
+if ip -V &> /dev/null; then
+    alias ip='ip -c'
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -alFa'
+alias la='ls -Aa'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+ring_thrice() {
+    for i in {1..3}; do 
+        echo -e "\a"
+        sleep 1.5
+    done
+}
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -65,29 +71,27 @@ if ! shopt -oq posix; then
 fi
 
 # get current branch in git repo
-function parse_git_branch() {
-    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-    if [ ! "${BRANCH}" == "" ]
-    then
-        echo "[${BRANCH}${STAT}]"
-    else
-        echo ""
-    fi
+#function parse_git_branch() {
+#    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+#    if [ ! "${BRANCH}" == "" ]
+#    then
+#        echo "[${BRANCH}${STAT}]"
+#    else
+#        echo ""
+#    fi
+#}
+
+function parse_git_dirty {
+  [[ $(git status --porcelain 2> /dev/null) ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ \[\1$(parse_git_dirty)\]/"
 }
 
-# get current branch in git repo
-function parse_git_branch() {
-    BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
-    if [ ! "${BRANCH}" == "" ]
-    then
-        echo "[${BRANCH}${STAT}]"
-    else
-        echo ""
-    fi
-}
+export PS1="\n\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 # get current status of git repo
-export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
+#export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
 #export DISPLAY=127.0.0.1:0.0
 umask 022
 
@@ -103,3 +107,5 @@ if xset -version &> /dev/null; then
 fi
 
 AUTO_ENV_FILENAME='.autoenv'
+
+

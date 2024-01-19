@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$((find ~/scott/repos ~/repos ~/ ~/repos/dotconfigs -mindepth 1 -maxdepth 1 -type d; tmux ls | awk -F: '{print $1}') | fzf)
+    selected=$((find /home/scott/ ~/scott/repos ~/repos ~/ ~/repos/dotconfigs -mindepth 1 -maxdepth 1 -type d; tmux ls | awk -F: '{print $1}') | fzf)
 fi
 
 if [[ -z $selected ]]; then

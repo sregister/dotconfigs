@@ -20,3 +20,5 @@ vim.api.nvim_create_user_command("DiagnosticToggle", function()
 		signs = not vt,
 	}
 end, { desc = "toggle diagnostic" })
+
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
