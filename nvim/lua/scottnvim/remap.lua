@@ -21,4 +21,9 @@ vim.api.nvim_create_user_command("DiagnosticToggle", function()
 	}
 end, { desc = "toggle diagnostic" })
 
+vim.api.nvim_create_user_command("CCSet", function(args)
+    vim.opt.colorcolumn = args['args']
+end, { desc = "toggle colorcolumn", nargs = '*' })
+
+
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
