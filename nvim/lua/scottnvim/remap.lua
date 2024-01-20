@@ -21,9 +21,21 @@ vim.api.nvim_create_user_command("DiagnosticToggle", function()
 	}
 end, { desc = "toggle diagnostic" })
 
+cc_val = "80"
+
 vim.api.nvim_create_user_command("CCSet", function(args)
-    vim.opt.colorcolumn = args['args']
+    cc_val = args['args']
+    vim.opt.colorcolumn = tostring(cc_val)
 end, { desc = "toggle colorcolumn", nargs = '*' })
+
+vim.api.nvim_create_user_command("CCon", function()
+    vim.opt.colorcolumn = tostring(cc_val)
+end, { desc = "turn colorcolumn on" })
+
+vim.api.nvim_create_user_command("CCoff", function()
+    vim.opt.colorcolumn = ""
+end, { desc = "turn colorcolumn off" })
+
 
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")

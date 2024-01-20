@@ -103,3 +103,8 @@ fi
 AUTOENV_ENV_FILENAME='.autoenv'
 source ~/.autoenv/activate.sh
 
+#wsl fix for windows filesystem 777 files being unreadable
+LS_COLORS=$LS_COLORS:'ow=1;34:' ; export LS_COLORS
+
+export EDITOR='vim'
+
