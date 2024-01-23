@@ -81,12 +81,21 @@ function parse_git_branch() {
     fi
 }
 
+function truncate_pwd {
+    if [ ${#PWD} -gt 20 ]; then
+        echo "^"${PWD: -17}
+    else
+        echo $PWD
+    fi
+}
 
+#export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
-export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\] \$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\$(truncate_pwd)\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+#export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\] \$(parse_git_branch)\[\033[00m\] $ "
 
-# get current status of git repo
 #export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
+
 #export DISPLAY=127.0.0.1:0.0
 umask 022
 
