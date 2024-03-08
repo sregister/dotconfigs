@@ -1,6 +1,6 @@
 
-# tmux sessionizer with ctrl-f
-bind '"\C-f": "tmux-sessionizer\n"'
+# tmux sessionizer with ctrl-f, clear prompt first
+bind '"\C-f": "\C-utmux-sessionizer\n"'
 
 # If not running interactively, don't do anything
 case $- in
