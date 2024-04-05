@@ -89,6 +89,20 @@ function truncate_pwd {
     fi
 }
 
+abs() {
+    local file="$1"
+    local full_path
+
+    # Check if the file exists
+    if [[ -e "$file" ]]; then
+        # Get the absolute path of the file
+        full_path="$(cd "$(dirname "$file")" && pwd)/$(basename "$file")"
+        echo "$full_path"
+    else
+        echo "Error: File '$file' does not exist."
+    fi
+}
+
 #export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
 export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\$(truncate_pwd)\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
