@@ -1,12 +1,11 @@
-
-# tmux sessionizer with ctrl-f
-bind '"\C-f": "tmux-sessionizer\n"'
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
       *) return;;
 esac
+
+# tmux sessionizer with ctrl-f
+bind '"\C-f": "tmux-sessionizer\n"'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -32,7 +31,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -81,6 +79,14 @@ function parse_git_branch() {
     fi
 }
 
+prompt_symbol() {
+    if [ $(jobs -s | wc -l) -gt 0 ]; then
+        echo "▸"
+    else
+        echo "$"
+    fi
+}
+
 function truncate_pwd {
     if [ ${#PWD} -gt 20 ]; then
         echo "^"${PWD: -17}
@@ -103,20 +109,14 @@ abs() {
     fi
 }
 
-#export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-
-export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\$(truncate_pwd)\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
-#export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\] \$(parse_git_branch)\[\033[00m\] $ "
-
-#export PS1="\[\e[32m\]\u\[\e[m\]@\[\e[35m\]\h\[\e[m\]\[\e[33m\]\`parse_git_branch\`\[\e[m\] \[\e[36m\]\W\[\e[m\]\\$ "
-
-#export DISPLAY=127.0.0.1:0.0
+export PS1="\[\e[35m\]\h\[\e[m\]\[\e[33m\] \[\033[32m\]\W\[\033[33m\] \$(parse_git_branch)\[\033[00m\]\$(prompt_symbol) "
 umask 022
 
 if command -v nvim &> /dev/null; then
   alias vim='nvim'
   alias vi='nvim'
 fi
+export EDITOR='vim'
 
 
 if xset -version &> /dev/null; then
@@ -128,6 +128,3 @@ source ~/.autoenv/activate.sh
 
 #wsl fix for windows filesystem 777 files being unreadable
 LS_COLORS=$LS_COLORS:'ow=1;34:' ; export LS_COLORS
-
-export EDITOR='vim'
-
