@@ -14,7 +14,8 @@ save_to_clipboard = true
 
 [mouse]
 bindings = [
-{ mouse = "Right", action = "Paste" }
+{mouse = "Middle"
+action = "PasteSelection"},
 ]
 
 [window.padding]

@@ -1,0 +1,46 @@
+#!/bin/bash
+# Brightness control script for screen lock
+# - AW2725DF (DP-1): Dims to 10% via DDC/CI
+# - Dell U2515HX (HDMI-A-2): Turns off via DPMS (DDC/CI not available through adapter)
+
+BRIGHTNESS_FILE="/tmp/hypr_brightness_restore"
+LOG_FILE="/tmp/brightness_lock.log"
+
+case "$1" in
+    dim)
+        # Save current brightness and dim AW2725DF to 10%
+        current=$(ddcutil getvcp 10 --display 1 2>/dev/null | grep -oP 'current value =\s*\K\d+')
+        if [[ -n "$current" ]]; then
+            echo "$current" > "$BRIGHTNESS_FILE"
+            ddcutil setvcp 10 10 --display 1 --noverify
+        fi
+        # Turn off Dell U2515HX via DPMS
+        hyprctl dispatch dpms off HDMI-A-2
+        ;;
+    restore)
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] Restore started" >> "$LOG_FILE"
+
+        # Turn Dell U2515HX back on
+        hyprctl dispatch dpms on HDMI-A-2
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] DPMS on for HDMI-A-2" >> "$LOG_FILE"
+
+        # Small delay to let DDC/CI become available
+        sleep 0.5
+
+        # Restore AW2725DF brightness
+        if [[ -f "$BRIGHTNESS_FILE" ]]; then
+            brightness=$(cat "$BRIGHTNESS_FILE")
+            echo "[$(date '+%Y-%m-%d %H:%M:%S')] Restoring to saved brightness: $brightness" >> "$LOG_FILE"
+            ddcutil setvcp 10 "$brightness" --display 1 --noverify 2>> "$LOG_FILE"
+            rm -f "$BRIGHTNESS_FILE"
+        else
+            echo "[$(date '+%Y-%m-%d %H:%M:%S')] No saved brightness, setting to 100" >> "$LOG_FILE"
+            ddcutil setvcp 10 100 --display 1 --noverify 2>> "$LOG_FILE"
+        fi
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] Restore completed" >> "$LOG_FILE"
+        ;;
+    *)
+        echo "Usage: $0 {dim|restore}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,57 @@
+# ~/.config/swaylock/config
+
+# --- General Settings ---
+ignore-empty-password
+daemonize
+show-failed-attempts
+
+# --- Image ---
+# Replace this path with the actual location of your background image!
+image=/usr/share/wallpapers/cachyos-wallpapers/Skyscraper.png 
+# If you want the background blurred (requires swaylock-effects), uncomment below:
+# effect-blur=7x5
+# effect-vignette=0.5:0.5
+
+# --- Clock & Indicator Layout (Matches the Catppuccin style) ---
+clock
+timestr=%H:%M:%S
+datestr=%a, %m/%d/%Y
+
+# Set the circle indicator to be large and hollow
+indicator
+indicator-radius=100
+indicator-thickness=7
+
+# --- Fonts ---
+font=Input Mono
+# You can change this to "JetBrains Mono" or whatever font you use on your system
+
+# --- THEME: Cyberpunk Teal/Emerald (Matched to your wallpaper) ---
+
+# The Ring (The bright teal circle)
+ring-color=00dcb4
+ring-ver-color=00dcb4
+ring-clear-color=e6d541
+ring-wrong-color=ff5555
+
+# Inside the Ring (Dark emerald semi-transparent)
+inside-color=02202088
+inside-ver-color=02202088
+inside-clear-color=02202088
+inside-wrong-color=02202088
+
+# The Text (White/Light Cyan)
+text-color=ffffff
+text-clear-color=e6d541
+text-ver-color=00dcb4
+text-wrong-color=ff5555
+
+# Key Highlight (When you type)
+key-hl-color=2effbd
+bs-hl-color=ff5555
+
+# Separator (The lines between the ring segments - set to transparent)
+separator-color=00000000
+
+# Layout Text (Usually hidden or subtle)
+layout-text-color=ffffff
