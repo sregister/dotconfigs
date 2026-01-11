@@ -6,7 +6,7 @@
 cp ./tmux.conf ~/.tmux.conf && echo "tmux configured"
 
 #bash
-cp ./bashrc ~/.bashrc && echo "bashrc configured"
+#cp ./bashrc ~/.bashrc && echo "bashrc configured"
 
 #vim
 #cp -R vim ~/.vim && cp vimrc ~/.vimrc && echo "vim files configured"
