@@ -1,0 +1,3 @@
+waybar/.git/
+waybar/modules/mailsecrets.py
+*.env
