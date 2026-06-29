@@ -1,0 +1,69 @@
+* {
+    font: "Hack 10";
+
+    cachydgreen: #007d6f;
+    cachymgreen: #00aa84;
+    cachydblue:  #111826;
+    cachymblue:  #182545;
+    cachywhite:  #ffffffff;
+
+    background-color: transparent;
+    text-color: @cachywhite;
+}
+
+window {
+    background-color: @cachydgreen;
+    border: 0;
+    border-radius: 0;
+    padding: 2px;
+}
+
+mainbox {
+    background-color: @cachydblue;
+    padding: 10px;
+    spacing: 5px;
+}
+
+inputbar {
+    background-color: @cachydblue;
+    padding: 5px;
+    spacing: 6px;
+}
+
+prompt,
+entry {
+    background-color: @cachydblue;
+    text-color: @cachywhite;
+}
+
+listview {
+    background-color: @cachydblue;
+    lines: 8;
+    scrollbar: false;
+    spacing: 0;
+}
+
+element {
+    background-color: @cachydblue;
+    padding: 4px;
+}
+
+element alternate.normal {
+    background-color: @cachymblue;
+}
+
+element selected {
+    background-color: @cachymgreen;
+}
+
+element-text,
+element-icon {
+    background-color: transparent;
+    text-color: @cachywhite;
+}
+
+message,
+textbox {
+    background-color: @cachydblue;
+    text-color: @cachywhite;
+}
